@@ -1,0 +1,34 @@
+server:
+  port: 8090
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/temp
+    username: postgres
+    password: 111
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        enable_lazy_load_no_trans: true
+jwt:
+  access:
+    key: 7#70OZn0#Dsaodi98BK8C1%T&hBnrzgqK28o
+    expiration-time: 7200000000
+  refresh:
+    key: 7787dsa8dp7#%70OZ()BK8C1%Taskldjksal***
+    expiration-time: 604800000
+
+app:
+  admin:
+    email: "admin@gmail.com"
+    password: admin
+
+# spring_profiles_active=prod
+# PROD_DB_HOST=viaduct.proxy.rlwy.net
+# PROD_DB_PORT=28290
+# PROD_DB_NAME=railway
+# PROD_DB_PASSWORD=3GGC6eAg-cFfDBBFeFF-Bedb1bG-A6De
+# PROD_DB_USERNAME=postgres

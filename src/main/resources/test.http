@@ -1,0 +1,21 @@
+POST http://localhost:8090/api/v1/auth/sign-in
+Content-Type: application/json
+
+{
+  "email": "admin@gmail.com",
+  "password": "admin"
+}
+
+###
+POST http://localhost:8090/api/v1/auth/sign-up
+Content-Type: application/json
+
+{
+  "name": "muaaz",
+  "email": "muazz@gmail.com",
+  "password": "111"
+}
+
+###
+GET http://localhost:8090/api/v1/user/list/0/5
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI0NzdhMjlhYy0yMGM0LTQ2N2EtODRjY2JjMzUtZWQwMS00OTQ0LWI4MjEtNzY0OTI4ZGJmNWU3LThkNDktNDM5ZDhlYjFjOWI2IiwiaWF0IjoxNzEzNDk3NTg0LCJleHAiOjE3MjA2OTc1ODR9.R1hPdZvsDqj3OK2B4QbqDFbH7tDwlroCuJwu7X7JDlg

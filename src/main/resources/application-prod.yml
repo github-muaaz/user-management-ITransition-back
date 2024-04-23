@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://${PROD_DB_HOST}:${PROD_DB_PORT}/${PROD_DB_NAME}
+    username: ${PROD_DB_USERNAME}
+    password: ${PROD_DB_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    properties:
+      hibernate:
+        enable_lazy_load_no_trans: true
+jwt:
+  access:
+    key: 7#70OZn0#Dsaodi98BK8C1%T&hBnrzgqK28o
+    expiration-time: 7200000000
+  refresh:
+    key: 7787dsa8dp7#%70OZ()BK8C1%Taskldjksal***
+    expiration-time: 604800000
+
+app:
+  admin:
+    email: "admin@gmail.com"
+    password: admin
