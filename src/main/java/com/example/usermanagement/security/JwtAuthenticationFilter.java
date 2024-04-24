@@ -1,10 +1,13 @@
 package com.example.usermanagement.security;
 
 import com.example.usermanagement.entity.User;
+import com.example.usermanagement.exceptions.RestException;
 import com.example.usermanagement.service.auth.AuthService;
+import com.example.usermanagement.utils.MessageConstants;
 import com.example.usermanagement.utils.RestConstants;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
@@ -50,6 +53,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         if (authorization != null) {
             User user = getUserFromBearerToken(authorization);
             if (user != null) {
+                if (!user.isEnabled())
+                    throw RestException
+                            .restThrow(MessageConstants.USER_DISABLED, HttpStatus.FORBIDDEN);
+
                 UsernamePasswordAuthenticationToken authenticationToken =
                         new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
                 SecurityContextHolder.getContext().setAuthentication(authenticationToken);

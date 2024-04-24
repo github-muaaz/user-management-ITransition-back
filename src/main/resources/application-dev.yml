@@ -27,8 +27,8 @@ app:
     password: admin
 
 # spring_profiles_active=prod
-# PROD_DB_HOST=viaduct.proxy.rlwy.net
-# PROD_DB_PORT=28290
+# PROD_DB_HOST=roundhouse.proxy.rlwy.net
+# PROD_DB_PORT=25630
 # PROD_DB_NAME=railway
-# PROD_DB_PASSWORD=3GGC6eAg-cFfDBBFeFF-Bedb1bG-A6De
+# PROD_DB_PASSWORD=NVwQlQYvlZQfgkovJGumtpSkzUGvYAOG
 # PROD_DB_USERNAME=postgres
