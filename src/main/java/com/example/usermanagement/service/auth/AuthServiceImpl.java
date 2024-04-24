@@ -22,6 +22,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -76,7 +77,7 @@ public class AuthServiceImpl implements AuthService {
                 .password(passwordEncoder.encode(signUpDTO.getPassword().trim()))
                 .name(signUpDTO.getName().trim())
                 .email(signUpDTO.getEmail().trim())
-                .lastLogin(LocalDateTime.now())
+                .lastLogin(LocalDateTime.now(ZoneOffset.UTC))
                 .enabled(true)
                 .build();
 
@@ -105,8 +106,7 @@ public class AuthServiceImpl implements AuthService {
                         || !user.isCredentialsNonExpired())
                     throw RestException.restThrow("USER_PERMISSION_RESTRICTION", HttpStatus.UNAUTHORIZED);
 
-
-                LocalDateTime tokenIssuedAt = LocalDateTime.now();
+                LocalDateTime tokenIssuedAt = LocalDateTime.now(ZoneOffset.UTC);
                 String newAccessToken = jwtTokenProvider.generateAccessToken(user, Timestamp.valueOf(tokenIssuedAt));
                 String newRefreshToken = jwtTokenProvider.generateRefreshToken(user);
 
@@ -144,7 +144,7 @@ public class AuthServiceImpl implements AuthService {
             throw RestException.restThrow(MessageConstants.LOGIN_OR_PASSWORD_ERROR, HttpStatus.FORBIDDEN);
         }
 
-        LocalDateTime tokenIssuedAt = LocalDateTime.now();
+        LocalDateTime tokenIssuedAt = LocalDateTime.now(ZoneOffset.UTC);
         String accessToken = jwtTokenProvider.generateAccessToken(user, Timestamp.valueOf(tokenIssuedAt));
         String refreshToken = jwtTokenProvider.generateRefreshToken(user);
 
